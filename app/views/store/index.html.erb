@@ -1,0 +1,18 @@
+<h1>Your programatic catalog</h1>
+
+<% if session[:counter] >= 5 %>
+  <%=pluralize session[:counter], 'time accessed' %>
+<% end %>
+
+<% for product in @products %>
+  <div class="entry">
+    <%= image_tag(product.image_url)%>
+    <h><%=h product.title%></h3>
+	<%= product.description %>
+	<div class="price-line">
+    <span class="price"><%= number_to_currency(product.price) %></span>
+    <%= button_to "Add to Cart", :action => 'add_to_cart', :id => product %>
+    </div>
+  </div>
+  
+<% end %>
