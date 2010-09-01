@@ -1,8 +1,8 @@
 <h1>Your programatic catalog</h1>
 
-<% if session[:counter] >= 5 %>
+<!--<% if session[:counter] >= 5 %>
   <%=pluralize session[:counter], 'time accessed' %>
-<% end %>
+<% end %>-->
 
 <% for product in @products %>
   <div class="entry">
@@ -11,7 +11,9 @@
 	<%= product.description %>
 	<div class="price-line">
     <span class="price"><%= number_to_currency(product.price) %></span>
-    <%= button_to "Add to Cart", :action => 'add_to_cart', :id => product %>
+    <% form_remote_tag :url => { :action => 'add_to_cart', :id => product } do %>
+        <%= submit_tag "Add to Cart" %>
+    <% end %>
     </div>
   </div>
   

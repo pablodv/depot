@@ -1,0 +1,29 @@
+<div class="depot-form">
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+    <legend>User details</legend>
+    <div>
+      <%= f.label :name %><br />
+      <%= f.text_field :name, :size => 40 %>
+    </div>
+    <div>
+      <%= f.label :user_password, "Password" %><br />
+      <%= f.text_field :password, :size => 40 %>
+    </div>
+    <div>
+      <%= f.label :user_password_confirmation, "Confirm" %><br />
+      <%= f.text_field :password_confirmation, :size => 40 %>
+    </div>
+    <div>
+      <%= f.submit 'Add user', :class => "sudmit" %>
+    </div>
+
+   </fieldset>
+<% end %>
+
+<%= link_to 'Back', users_path %>
+
+</div>
